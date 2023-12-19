@@ -1,0 +1,18 @@
+ERROR:704750195
+
+NetworkError: Aiohttp client throws an error: ClientConnectorError: Cannot connect to host localhost:8081 ssl:default [Удаленный компьютер отклонил это сетевое подключение]
+File: d:\vsc\_orders\Lichak\gpt\src\Bot\bot.py
+Line: 188
+Func: send_message
+Cod:  return await Bot_.bot.send_message(
+
+2023-12-15 23:01:09,690
+ERROR:704750195
+
+NetworkError: Aiohttp client throws an error: ClientConnectorError: Cannot connect to host localhost:8081 ssl:default [Удаленный компьютер отклонил это сетевое подключение]
+File: d:\vsc\_orders\Lichak\gpt\src\Bot\bot.py
+Line: 188
+Func: send_message
+Cod:  return await Bot_.bot.send_message(
+
+2023-12-15 23:17:07,812
