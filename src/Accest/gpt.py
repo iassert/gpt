@@ -15,26 +15,24 @@ openai.api_key = Config.API_KEY
 
 class ChatGPT:
     __log = Log("gpt")
-
     __promt: str = ""
-    __messages = [
-        {
-            "role": "system", 
-            "content": __promt
-        }
-    ]
-
     __limit = 940
 
     @staticmethod
     def create(text: str) -> str:
+        messages = [
+            {
+                "role": "system", 
+                "content": ChatGPT.__promt
+            }
+        ]
         out = ""
 
         for i in [
             text[i:i + ChatGPT.__limit] 
             for i in range(0, len(text), ChatGPT.__limit)
         ]:
-            ChatGPT.__messages.append(
+            messages.append(
                 {
                     "role": "user", 
                     "content": i
@@ -44,14 +42,14 @@ class ChatGPT:
             try:
                 request = openai.ChatCompletion.create(
                     model = "gpt-3.5-turbo-1106",
-                    messages = ChatGPT.__messages,
+                    messages = messages,
                     max_tokens = ChatGPT.__limit // 2,
                     temperature = 1
                 )
 
                 msg = request.choices[-1].message["content"]
 
-                ChatGPT.__messages.append(
+                messages.append(
                     {
                         "role": "assistant", 
                         "content": msg
